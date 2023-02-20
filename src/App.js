@@ -1,7 +1,9 @@
 
 import React, { useEffect } from "react";
 import "./App.css";
+import SingleMovie from "./components/SingleMovie";
 import Mainscreen from "./screens/Mainscreen";
+import Listscreen from "./screens/Listscreen";
 
 function App() {
   useEffect(() => {
@@ -20,7 +22,7 @@ function App() {
     getData();
   }, []);
 
-  return <Mainscreen />;
+  return < Mainscreen />;
 
 }
 
