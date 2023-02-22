@@ -23,7 +23,7 @@ const SingleMovie = () => {
             <div className=" bg-primaryGreen h-screen flex flex-wrap justify-center">
            
                 < Header />
-                <div className=" w-9/12 bg-primaryOrange flex flex-wrap h-5/6">
+                <div className=" w-9/12 bg-primaryOrange m-1 flex flex-wrap h-5/6">
                     <div className=" w-1/3 h-full">
                         < SingleMovieTitleImage viewFav={viewFavourite} />
                     </div>
@@ -46,7 +46,7 @@ const SingleMovie = () => {
             <div className=" bg-primaryGreen h-screen flex flex-wrap justify-center">
            
                 < Header />
-                <div className=" w-11/12 bg-primaryOrange flex flex-wrap h-5/6">
+                <div className=" w-11/12 bg-primaryOrange m-1 flex flex-wrap h-5/6">
                     <div className=" w-1/3">
                 < SingleMovieTitleImage viewFav={viewFavourite} />
                 </div>
