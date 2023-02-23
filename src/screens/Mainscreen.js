@@ -1,10 +1,10 @@
 import React from "react";
 import SearchBox from "../components/SearchBox";
 
-const Mainscreen = () => {
+const Mainscreen = (props) => {
   return (
     <div className="bg-hero bg-contain bg-no-repeat bg-cover">
-      <SearchBox />
+      <SearchBox search={props.search} />
     </div>
   );
 };
