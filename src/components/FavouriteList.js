@@ -1,5 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import FavListMovie from "./FavListMovie";
 
 const FavouriteList = (props) => {
 	if (props.viewFav === true) {
@@ -14,6 +15,9 @@ const FavouriteList = (props) => {
 					</div>
 				</button>
 				<div className=" text-center mt-2 font-bold">Favourites</div>
+				<div className=" mt-5 flex justify-center items-center">
+					<FavListMovie />
+				</div>
 			</div>
 		);
 	} else {
