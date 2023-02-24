@@ -48,7 +48,7 @@ const Listscreen = (props) => {
 
   if (viewFavourite === false && viewFilter === true) {
     return (
-      <div className=" bg-primaryGreen h-screen flex flex-wrap justify-center rounded-md">
+      <div className=" bg-primaryGreen h-screen flex flex-wrap justify-center">
         <Header />
         <MovieFilter hideFilHandler={hideFilHandler} viewFilter={viewFilter} />
         <MovieList
@@ -61,7 +61,7 @@ const Listscreen = (props) => {
     );
   } else if (viewFavourite === true && viewFilter === false) {
     return (
-      <div className=" bg-primaryGreen h-screen flex flex-wrap justify-center rounded-md">
+      <div className=" bg-primaryGreen h-screen flex flex-wrap justify-center">
         <Header />
         <MovieFilter viewFilHandler={viewFilHandler} viewFilter={viewFilter} />
         <MovieList
@@ -74,7 +74,7 @@ const Listscreen = (props) => {
     );
   } else if (viewFavourite === false && viewFilter === false) {
     return (
-      <div className=" bg-primaryGreen h-screen flex flex-wrap justify-center rounded-md">
+      <div className=" bg-primaryGreen h-screen flex flex-wrap justify-center">
         <Header />
         <MovieFilter viewFilHandler={viewFilHandler} viewFilter={viewFilter} />
         <MovieList
