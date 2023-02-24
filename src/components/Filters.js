@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const SearchForm = () => {
+const Filters = () => {
   const [searchType, setSearchType] = useState("Title");
   const [titleInput, setTitleInput] = useState("");
   const [yearInputLower, setYearInputLower] = useState("");
@@ -131,12 +131,12 @@ const SearchForm = () => {
           />
         </div>
       </div>
-      <div class="mt-4 flex flex-row items-center">
-        <button class="px-6 py-3 rounded-md bg-primaryOrange text-white font-semibold mr-4">
+      <div className="mt-4 flex flex-row items-center">
+        <button className="px-6 py-3 rounded-md bg-primaryOrange text-white font-semibold mr-4">
           Filter
         </button>
-        <div class="w-4"></div>
-        <button class="px-6 py-3 rounded-md bg-primaryOrange text-white font-semibold ml-4">
+        <div className="w-4"></div>
+        <button className="px-6 py-3 rounded-md bg-primaryOrange text-white font-semibold ml-4">
           Clear Filters
         </button>
       </div>
@@ -144,4 +144,4 @@ const SearchForm = () => {
   );
 };
 
-export default SearchForm;
+export default Filters;

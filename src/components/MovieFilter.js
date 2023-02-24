@@ -1,5 +1,5 @@
 import React from "react";
-import Slider from "./Slider";
+import Filters from "./Filters";
 
 const MovieFilter = (props) => {
   if (props.viewFilter === true) {
@@ -11,7 +11,7 @@ const MovieFilter = (props) => {
         >
           <div className=" mr-0"> ^ </div>
         </button>
-        <Slider />
+        <Filters />
       </div>
     );
   } else {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import MovieCard from "./MovieCard";
 import MovieListHeader from "./MovieListHeader";
 
@@ -8,7 +8,7 @@ const MovieList = (props) => {
       <div className=" bg-secondaryGreen  m-1 p-1 h-5/6 w-1/2 overflow-auto">
         <MovieListHeader />
         {props.moviesToShow.map((movie, i) => {
-          return <MovieCard />;
+          return <MovieCard key={i} movie={movie} />;
         })}
       </div>
     );

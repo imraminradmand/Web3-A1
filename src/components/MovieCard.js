@@ -1,15 +1,30 @@
 import React from "react";
 
 function MovieCard(props) {
+  const posterURL = `https://image.tmdb.org/t/p/w92/${props.movie.poster}`;
   return (
     <div className="grid grid-cols-7 gap-4 px-4 py-2">
-      <div className="bg-gray-200 h-12 col-span-1">1</div>
-      <div className="bg-gray-300 h-12 col-span-1">2</div>
-      <div className="bg-gray-400 h-12 col-span-1">3</div>
-      <div className="bg-gray-500 h-12 col-span-1">4</div>
-      <div className="bg-gray-600 h-12 col-span-1">5</div>
-      <div className="bg-gray-700 h-12 col-span-1">6</div>
-      <div className="bg-gray-800 h-12 col-span-1">7</div>
+      <div className="h-40 col-span-1 flex justify-center">
+        <img
+          src={posterURL}
+          className="h-full max-w-full"
+          alt={`${props.movie.title} poster`}
+        />
+      </div>
+      <div className="h-12 col-span-1">{props.movie.title}</div>
+      <div className="h-12 col-span-1">
+        {props.movie["release_date"].substr(0, 4)}
+      </div>
+      <div className="h-12 col-span-1">{props.movie.ratings.average}</div>
+      <div className="h-12 col-span-1">
+        {props.movie.ratings.popularity.toFixed(1)}
+      </div>
+      <div className="h-12 col-span-1">
+        <button className="">fav</button>
+      </div>
+      <div className="h-12 col-span-1">
+        <button>Show</button>
+      </div>
     </div>
   );
 }
