@@ -32,7 +32,7 @@ const Filters = () => {
     setRatingInputUpper(event.target.value);
   };
   return (
-    <div className="flex flex-col justify-center items-center border border-gray-300 rounded-md p-6">
+    <div className="flex flex-col justify-center items-center border rounded-md p-6">
       <h2 className="text-xl font-bold mb-4">Filter Movies</h2>
       <div className="flex items-center mb-4">
         <input
@@ -49,7 +49,7 @@ const Filters = () => {
           value={titleInput}
           onChange={handleTitleInputChange}
           placeholder="Enter a movie title..."
-          className="border border-gray-300 rounded-md ml-4 p-1 w-64"
+          className="border rounded-md ml-4 p-1 w-64"
           disabled={searchType !== "Title"}
         />
       </div>
@@ -64,7 +64,7 @@ const Filters = () => {
         />
         <label className="font-bold">Genre</label>
         <select
-          className="border border-gray-300 rounded-md ml-4 p-1 w-64"
+          className="border rounded-md ml-4 p-1 w-64"
           disabled={searchType !== "Genre"}
         >
           <option value="">Select a genre...</option>
@@ -89,7 +89,7 @@ const Filters = () => {
             value={yearInputLower}
             onChange={handleYearInputLowerChange}
             placeholder="Enter lower bound..."
-            className="border border-gray-300 rounded-md p-1 w-24 mr-2"
+            className="border rounded-md p-1 w-24 mr-2"
             disabled={searchType !== "Year"}
           />
           <input
@@ -97,7 +97,7 @@ const Filters = () => {
             value={yearInputUpper}
             onChange={handleYearInputUpperChange}
             placeholder="Enter upper bound..."
-            className="border border-gray-300 rounded-md p-1 w-24"
+            className="border rounded-md p-1 w-24"
             disabled={searchType !== "Year"}
           />
         </div>
@@ -118,7 +118,7 @@ const Filters = () => {
             value={ratingInputLower}
             onChange={handleRatingInputLowerChange}
             placeholder="Enter lower bound..."
-            className="border border-gray-300 rounded-md p-1 w-24 mr-2"
+            className="border rounded-md p-1 w-24 mr-2"
             disabled={searchType !== "Rating"}
           />
           <input
@@ -126,7 +126,7 @@ const Filters = () => {
             value={ratingInputUpper}
             onChange={handleRatingInputUpperChange}
             placeholder="Enter upper bound..."
-            className="border border-gray-300 rounded-md p-1 w-24"
+            className="border rounded-md p-1 w-24"
             disabled={searchType !== "Rating"}
           />
         </div>
