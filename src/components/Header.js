@@ -20,7 +20,7 @@ const Header = () => {
 					About
 				</button>
 				<Modal
-					className=" top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 absolute w-1/2 h-4/6 bg-primaryYellow border-primaryGreen border-solid border-4 rounded"
+					className=" overflow-auto top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 absolute w-1/2 h-3/4 bg-primaryYellow border-primaryGreen border-solid border-4 rounded"
 					isOpen={modalIsOpen}
 					onRequestClose={toggleModal}
 					contentLabel="About Us Modal"
@@ -66,7 +66,7 @@ const Header = () => {
 						Technology Used
 					</div>
 					<div className="flex flex-wrap mt-5 ">
-						<div className=" w-1/3   ">
+						<div className=" w-1/3 mb-5   ">
 							<div className=" text-center">React</div>
 							<div className="flex justify-center">
 								<img
@@ -76,7 +76,7 @@ const Header = () => {
 								/>
 							</div>
 						</div>
-						<div className=" w-1/3   ">
+						<div className=" w-1/3 mb-5   ">
 							<div className=" text-center">Tailwind CSS</div>
 							<div className="flex justify-center">
 								<img
@@ -86,7 +86,7 @@ const Header = () => {
 								/>
 							</div>
 						</div>
-						<div className=" w-1/3   ">
+						<div className=" w-1/3 mb-5  ">
 							<div className=" text-center">React Router</div>
 							<div className="flex justify-center">
 								<img
@@ -99,7 +99,7 @@ const Header = () => {
 					</div>
 					<button
 						onClick={toggleModal}
-						className=" fixed bottom-0 right-0 mb-5 mr-5 bg-primaryGreen border-primaryGreen border-solid border-2 hover:bg-secondaryGreen pl-3 pr-3 pt-2 pb-2 text-center rounded"
+						className=" relative float-right bottom-0 right-0 mt-2 mb-5 mr-5 bg-primaryGreen border-primaryGreen border-solid border-2 hover:bg-secondaryGreen pl-3 pr-3 pt-2 pb-2 text-center rounded"
 					>
 						Close
 					</button>
@@ -107,6 +107,5 @@ const Header = () => {
 			</div>
 		</div>
 	);
-
 };
 export default Header;
