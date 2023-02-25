@@ -16,6 +16,7 @@ import {
 import React, { useEffect, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
+import SingleMovie from "./components/SingleMovie";
 import Listscreen from "./screens/Listscreen";
 import Mainscreen from "./screens/Mainscreen";
 library.add(
@@ -63,6 +64,7 @@ function App() {
           path="/list"
           element={<Listscreen searchedMovie={searchTerm} />}
         />
+        <Route path="/movie" element={<SingleMovie />} />
       </Routes>
     </main>
   );
