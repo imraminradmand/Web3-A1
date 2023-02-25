@@ -1,13 +1,16 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import FavouriteList from "./FavouriteList";
 import Header from "./Header";
 import SingleMovieInfo from "./SingleMovieInfo";
 import SingleMovieRating from "./SingleMovieRating";
 import SingleMovieTitleImage from "./SingleMovieTitleImage";
 
-const SingleMovie = () => {
+const SingleMovie = (props) => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const [singleMovie, setSingleMovie] = useState(location.state);
+
   const [viewFavourite, setViewFavourite] = useState(true);
 
   const viewHandler = () => {
@@ -22,6 +25,9 @@ const SingleMovie = () => {
     navigate(-1);
   };
 
+  useEffect(() => {
+    console.log(location.state?.singleMovie);
+  });
   if (viewFavourite) {
     return (
       <div className=" bg-primaryGreen h-screen flex flex-wrap justify-center">
