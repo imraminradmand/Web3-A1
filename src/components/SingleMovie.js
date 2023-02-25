@@ -26,15 +26,20 @@ const SingleMovie = (props) => {
   };
 
   useEffect(() => {
-    console.log(location.state?.singleMovie);
-  });
+    setSingleMovie(location.state?.singleMovie);
+  }, [location.state.singleMovie]);
+
   if (viewFavourite) {
     return (
       <div className=" bg-primaryGreen h-screen flex flex-wrap justify-center">
         <Header />
         <div className=" w-9/12 bg-primaryOrange m-1 flex flex-wrap h-5/6">
           <div className=" w-1/3 h-full">
-            <SingleMovieTitleImage viewFav={viewFavourite} goBack={goBack} />
+            <SingleMovieTitleImage
+              viewFav={viewFavourite}
+              goBack={goBack}
+              movie={singleMovie}
+            />
           </div>
           <div className="w-2/3">
             <SingleMovieRating />

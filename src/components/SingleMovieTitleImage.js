@@ -2,6 +2,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
 const SingleMovieTitleImage = (props) => {
+  const URL = `https://image.tmdb.org/t/p/w500/${props.movie.poster}`;
+  const title = props.movie.title;
   const testfav = true;
   let statement = "";
 
@@ -34,12 +36,9 @@ const SingleMovieTitleImage = (props) => {
           </button>
           {isFavorite()}
         </div>
-        <div className=" text-center font-bold text-4xl p-5">BloodShot</div>
+        <div className=" text-center font-bold text-4xl p-5">{title}</div>
         <div className="p-2 bg-primaryYellow">
-          <img
-            src="https://image.tmdb.org/t/p/w500/8WUVHemHFH2ZIP6NWkwlHWsyrEL.jpg"
-            alt="movie poster"
-          />
+          <img src={URL} alt="movie poster" />
         </div>
         <div className=" text-center">Add Your Rating</div>
       </div>
@@ -53,12 +52,9 @@ const SingleMovieTitleImage = (props) => {
           </button>
           {isFavorite()}
         </div>
-        <div className=" text-center font-bold text-4xl p-5">BloodShot</div>
+        <div className=" text-center font-bold text-4xl p-5">{title}</div>
         <div className="p-2 bg-primaryYellow">
-          <img
-            src="https://image.tmdb.org/t/p/w500/8WUVHemHFH2ZIP6NWkwlHWsyrEL.jpg"
-            alt="movie poster"
-          />
+          <img src={URL} alt="movie poster" />
         </div>
         <button className=" bg-primaryOrange">
           <div>
