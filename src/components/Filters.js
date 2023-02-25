@@ -1,15 +1,23 @@
 import React, { useState } from "react";
 
-const Filters = () => {
+const Filters = (props) => {
   const [searchType, setSearchType] = useState("Title");
   const [titleInput, setTitleInput] = useState("");
   const [yearInputLower, setYearInputLower] = useState("");
   const [yearInputUpper, setYearInputUpper] = useState("");
   const [ratingInputLower, setRatingInputLower] = useState("");
   const [ratingInputUpper, setRatingInputUpper] = useState("");
+  const [selectedOption, setSelectedOption] = useState("");
 
   const handleRadioChange = (event) => {
     setSearchType(event.target.value);
+    // set all states to empty
+    setTitleInput("");
+    setYearInputLower("");
+    setYearInputUpper("");
+    setRatingInputLower("");
+    setRatingInputUpper("");
+    setSelectedOption("");
   };
 
   const handleTitleInputChange = (event) => {
@@ -31,8 +39,23 @@ const Filters = () => {
   const handleRatingInputUpperChange = (event) => {
     setRatingInputUpper(event.target.value);
   };
+
+  const handleSelectChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
+
+  const handleFilterClick = () => {
+    props.filterFunction(
+      titleInput,
+      yearInputLower,
+      yearInputUpper,
+      ratingInputLower,
+      ratingInputUpper,
+      selectedOption
+    );
+  };
   return (
-    <div className="flex flex-col justify-center items-center border rounded-md p-6">
+    <div className="flex flex-col justify-center items-center rounded-md p-6">
       <h2 className="text-xl font-bold mb-4">Filter Movies</h2>
       <div className="flex items-center mb-4">
         <input
@@ -66,6 +89,8 @@ const Filters = () => {
         <select
           className="border rounded-md ml-4 p-1 w-64"
           disabled={searchType !== "Genre"}
+          value={selectedOption}
+          onChange={handleSelectChange}
         >
           <option value="">Select a genre...</option>
           <option value="Action">Action</option>
@@ -132,7 +157,10 @@ const Filters = () => {
         </div>
       </div>
       <div className="mt-4 flex flex-row items-center">
-        <button className="px-6 py-3 rounded-md bg-primaryOrange text-white font-semibold mr-4">
+        <button
+          onClick={handleFilterClick}
+          className="px-6 py-3 rounded-md bg-primaryOrange text-white font-semibold mr-4"
+        >
           Filter
         </button>
         <div className="w-4"></div>

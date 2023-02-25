@@ -12,6 +12,16 @@ const Listscreen = (props) => {
   );
   const [requestMovie, setRequestedMovie] = useState([]);
 
+  const [titleInput, setTitleInput] = useState("");
+  const [yearInputLower, setYearInputLower] = useState("");
+  const [yearInputUpper, setYearInputUpper] = useState("");
+  const [ratingInputLower, setRatingInputLower] = useState("");
+  const [ratingInputUpper, setRatingInputUpper] = useState("");
+  const [genreInput, setGenreInput] = useState("");
+
+  const [viewFavourite, setViewFavourite] = useState(true);
+  const [viewFilter, setViewFilter] = useState(true);
+
   useEffect(() => {
     if (!props.searchedMovie) {
       navigate("/");
@@ -26,9 +36,6 @@ const Listscreen = (props) => {
       setRequestedMovie(filteredMovie);
     }
   }, [props.searchedMovie, movies, navigate]);
-
-  const [viewFavourite, setViewFavourite] = useState(true);
-  const [viewFilter, setViewFilter] = useState(true);
 
   const viewHandler = () => {
     setViewFavourite(true);
@@ -46,6 +53,22 @@ const Listscreen = (props) => {
     setViewFilter(false);
   };
 
+  const handleFiltering = (
+    title = null,
+    genre = null,
+    lowerYear = null,
+    upperYear = null,
+    lowerRating = null,
+    upperRating = null
+  ) => {
+    setTitleInput(title);
+    setYearInputLower(lowerYear);
+    setYearInputUpper(upperYear);
+    setRatingInputLower(lowerRating);
+    setRatingInputUpper(upperRating);
+    setGenreInput(genre);
+  };
+
   if (viewFavourite === false && viewFilter === true) {
     return (
       <div className=" bg-primaryGreen h-screen flex flex-wrap justify-center">
@@ -56,6 +79,7 @@ const Listscreen = (props) => {
           viewFilter={viewFilter}
           moviesToShow={requestMovie}
         />
+
         <FavouriteList viewHandler={viewHandler} viewFav={viewFavourite} />
       </div>
     );
@@ -89,7 +113,11 @@ const Listscreen = (props) => {
     return (
       <div className=" bg-primaryGreen h-screen flex flex-wrap justify-center">
         <Header />
-        <MovieFilter hideFilHandler={hideFilHandler} viewFilter={viewFilter} />
+        <MovieFilter
+          hideFilHandler={hideFilHandler}
+          viewFilter={viewFilter}
+          filtering={handleFiltering}
+        />
         <MovieList
           viewFav={viewFavourite}
           viewFilter={viewFilter}
