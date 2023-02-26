@@ -8,7 +8,6 @@ const Mainscreen = (props) => {
         <SearchBox search={props.search} />
       </div>
       <div className="fixed bottom-0 left-0 right-0 flex justify-center items-center text-white">
-        {/* link to site */}
         <a href="https://unsplash.com/@thomasw">
           <p className="text-md">Credit: Thomas William</p>
         </a>
