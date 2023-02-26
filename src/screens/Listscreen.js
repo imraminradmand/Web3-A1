@@ -35,7 +35,7 @@ const Listscreen = (props) => {
       setRequestedMovie(sortedMovies);
     } else {
       const filteredMovie = movies.filter((movie) =>
-        movie.title.toLowerCase().includes("a")
+        movie.title.toLowerCase().includes(props.searchedMovie)
       );
       const sortedMovies = filteredMovie
         .slice()
