@@ -1,5 +1,6 @@
 import React from "react";
 import Modal from "react-modal";
+import { Link } from "react-router-dom";
 
 const Header = () => {
 	const [modalIsOpen, setModalIsOpen] = React.useState(false);
@@ -10,12 +11,23 @@ const Header = () => {
 	}
 
 	return (
-		<div className=" bg-primaryYellow m-3 p-1 w-full">
-			<div>We Give You Watch</div>
-			<div className=" float-right mr-3">
+		<div className=" bg-primaryYellow m-1 w-full flex justify-between p-2">
+			<Link to="/">
+				<div className="flex flex-wrap items-center">
+					<img
+						className="  ml-10 h-20"
+						src="../../TEAM-LOGO-2.png"
+						alt="logo"
+					/>
+					<div className="flex items-center font-bold text-xl ml-5 mt-10 text-primaryGreen ">
+						"The More You Watch The More Reel It Gets..."
+					</div>
+				</div>
+			</Link>
+			<div className="items-center mr-3 flex">
 				<button
 					onClick={toggleModal}
-					className=" m-2 bg-primaryGreen border-primaryGreen border-solid border-2 hover:bg-secondaryGreen pl-3 pr-3 pt-2 pb-2 text-center rounded"
+					className="  bg-primaryGreen border-primaryGreen border-solid border-2 hover:bg-secondaryGreen pl-3 pr-3 pt-2 pb-2 text-center rounded"
 				>
 					About
 				</button>
