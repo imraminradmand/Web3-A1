@@ -1,7 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { addToFav } from "../utility/utility";
 
 function MovieCard(props) {
   const navigate = useNavigate();
@@ -25,8 +24,7 @@ function MovieCard(props) {
   };
 
   const handleFavAdd = () => {
-    addToFav(props.movie);
-    props.setFav(props.movie);
+    props.setFav([...props.favs, props.movie]);
   };
   return (
     <div className="grid grid-cols-7 gap-4 px-4 py-2 items-center bg-primaryGreen mb-1">

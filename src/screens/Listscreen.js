@@ -4,7 +4,6 @@ import FavouriteList from "../components/FavouriteList";
 import Header from "../components/Header";
 import MovieFilter from "../components/MovieFilter";
 import MovieList from "../components/MovieList";
-import useLStorage from "../utility/useLStorage";
 
 const Listscreen = (props) => {
   const navigate = useNavigate();
@@ -22,7 +21,6 @@ const Listscreen = (props) => {
 
   const [viewFavourite, setViewFavourite] = useState(true);
   const [viewFilter, setViewFilter] = useState(true);
-  const [favouritedMovies, setFavoriteMovies] = useLStorage("favMovies", []);
 
   useEffect(() => {
     if (!props.searchedMovie) {
@@ -129,12 +127,14 @@ const Listscreen = (props) => {
           viewFav={viewFavourite}
           viewFilter={viewFilter}
           moviesToShow={requestMovie}
-          setFav={setFavoriteMovies}
+          favs={props.favMovie}
+          setFav={props.setFavs}
         />
         <FavouriteList
           hideHandler={hideHandler}
           viewFav={viewFavourite}
-          favs={favouritedMovies}
+          favs={props.favMovie}
+          setFav={props.setFavs}
         />
       </div>
     );

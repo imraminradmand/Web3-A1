@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import MovieCard from "./MovieCard";
 import MovieListHeader from "./MovieListHeader";
 
-const MovieList = ({ moviesToShow, viewFav, viewFilter, setFav }) => {
+const MovieList = ({ moviesToShow, viewFav, viewFilter, favs, setFav }) => {
   const [movieList, setMovieList] = useState(moviesToShow);
   const [sortKey, setSortKey] = useState("");
   const [sortOrder, setSortOrder] = useState("asc");
@@ -52,7 +52,9 @@ const MovieList = ({ moviesToShow, viewFav, viewFilter, setFav }) => {
         <MovieListHeader sortHandler={handleSort} />
         <div className="bg-secondaryGreen h-5/6 overflow-auto rounded-md mt-3">
           {movieList.map((movie, i) => {
-            return <MovieCard key={i} movie={movie} setFav={setFav} />;
+            return (
+              <MovieCard key={i} movie={movie} setFav={setFav} favs={favs} />
+            );
           })}
         </div>
       </div>
