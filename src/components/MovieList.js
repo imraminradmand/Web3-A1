@@ -17,23 +17,36 @@ const MovieList = (props) => {
 	} else if (props.viewFav === false && props.viewFilter === true) {
 		return (
 			<div className=" bg-secondaryGreen m-1 p-1 h-5/6 w-8/12 rounded-md">
-				here 2
+				<MovieListHeader />
+				<div className="bg-secondaryGreen h-5/6 overflow-auto rounded-md mt-3">
+					{props.moviesToShow.map((movie, i) => {
+						return <MovieCard key={i} movie={movie} />;
+					})}
+				</div>
 			</div>
 		);
 	} else if (props.viewFav === true && props.viewFilter === false) {
 		return (
-			<div className=" bg-secondaryGreen m-1 p-1 h-5/6 w-9/12 rounded-md">
-				here3
+			<div className=" bg-secondaryGreen m-1 p-1 h-5/6 w-3/4 rounded-md">
+				<MovieListHeader />
+				<div className="bg-secondaryGreen h-5/6 overflow-auto rounded-md mt-3">
+					{props.moviesToShow.map((movie, i) => {
+						return <MovieCard key={i} movie={movie} />;
+					})}
+				</div>
 			</div>
 		);
 	} else {
-		props.moviesToShow.forEach((movie) => {
-			return (
-				<div className=" bg-secondaryGreen m-1 p-1 h-5/6 w-11/12 rounded-md">
-					here4
+		return (
+			<div className=" bg-secondaryGreen m-1 p-1 h-5/6 w-11/12 rounded-md">
+				<MovieListHeader />
+				<div className="bg-secondaryGreen h-5/6 overflow-auto rounded-md mt-3">
+					{props.moviesToShow.map((movie, i) => {
+						return <MovieCard key={i} movie={movie} />;
+					})}
 				</div>
-			);
-		});
+			</div>
+		);
 	}
 };
 export default MovieList;
