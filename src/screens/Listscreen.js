@@ -29,13 +29,18 @@ const Listscreen = (props) => {
       navigate("/");
     }
     if (props.searchedMovie === " ") {
-      setRequestedMovie(movies);
+      const sortedMovies = movies
+        .slice()
+        .sort((a, b) => a.title.localeCompare(b.title));
+      setRequestedMovie(sortedMovies);
     } else {
       const filteredMovie = movies.filter((movie) =>
-        movie.title.toLowerCase().includes("a")
+        movie.title.toLowerCase().includes(props.searchedMovie)
       );
-
-      setRequestedMovie(filteredMovie);
+      const sortedMovies = filteredMovie
+        .slice()
+        .sort((a, b) => a.title.localeCompare(b.title));
+      setRequestedMovie(sortedMovies);
     }
   }, [props.searchedMovie, movies, navigate]);
 

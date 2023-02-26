@@ -1,9 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { addToFav } from "../utility/utility";
 
 function MovieCard(props) {
+  const navigate = useNavigate();
   const posterURL = `https://image.tmdb.org/t/p/w92/${props.movie.poster}`;
   const [singleMovie, setSingleMovie] = useState(props.movie);
 
@@ -19,20 +20,36 @@ function MovieCard(props) {
     return statement;
   }
 
+  const navigateToMovie = () => {
+    navigate("/movie", { state: { singleMovie: singleMovie } });
+  };
+
   const handleFavAdd = () => {
     addToFav(props.movie);
     props.setFav(props.movie);
   };
   return (
     <div className="grid grid-cols-7 gap-4 px-4 py-2 items-center bg-primaryGreen mb-1">
-      <div className="h-40 col-span-1 flex justify-center">
+      <div
+        className="h-40 col-span-1 flex justify-center cursor-pointer"
+        onClick={() => {
+          navigateToMovie();
+        }}
+      >
         <img
           src={posterURL}
           className="h-full max-w-full"
           alt={`${props.movie.title} poster`}
         />
       </div>
-      <div className="h-12 col-span-1 text-center">{props.movie.title}</div>
+      <div
+        className="h-12 col-span-1 text-center cursor-pointer"
+        onClick={() => {
+          navigateToMovie();
+        }}
+      >
+        {props.movie.title}
+      </div>
       <div className="h-12 col-span-1 text-center">
         {props.movie["release_date"].substr(0, 4)}
       </div>
