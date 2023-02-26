@@ -8,6 +8,8 @@ module.exports = {
 			primaryYellow: "#FCF8E8",
 			primaryOrange: "#ECB390",
 			lightGrey: "#D3D3D3",
+			starYellow: " yellow",
+			starGrey: "gray",
 		},
 		extend: {
 			backgroundImage: {
