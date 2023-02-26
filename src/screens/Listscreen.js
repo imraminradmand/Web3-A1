@@ -12,6 +12,8 @@ const Listscreen = (props) => {
 	);
 	const [requestMovie, setRequestedMovie] = useState([]);
 
+	const { filteredList, setFilteredList } = useState([]);
+
 	const [titleInput, setTitleInput] = useState("");
 	const [yearInputLower, setYearInputLower] = useState("");
 	const [yearInputUpper, setYearInputUpper] = useState("");
@@ -21,6 +23,11 @@ const Listscreen = (props) => {
 
 	const [viewFavourite, setViewFavourite] = useState(true);
 	const [viewFilter, setViewFilter] = useState(true);
+
+	function newFilterResults(filteredList) {
+		setRequestedMovie(filteredList);
+		console.log(filteredList);
+	}
 
 	useEffect(() => {
 		if (!props.searchedMovie) {
@@ -59,12 +66,12 @@ const Listscreen = (props) => {
 	};
 
 	const handleFiltering = (
-		title = null,
-		genre = null,
-		lowerYear = null,
-		upperYear = null,
-		lowerRating = null,
-		upperRating = null
+		title,
+		genre,
+		lowerYear,
+		upperYear,
+		lowerRating,
+		upperRating
 	) => {
 		setTitleInput(title);
 		setYearInputLower(lowerYear);
@@ -72,17 +79,26 @@ const Listscreen = (props) => {
 		setRatingInputLower(lowerRating);
 		setRatingInputUpper(upperRating);
 		setGenreInput(genre);
+		console.log(title, genre, lowerYear, upperYear, lowerRating, upperRating);
 	};
 
 	if (viewFavourite === false && viewFilter === true) {
 		return (
 			<div className=" bg-primaryGreen h-screen flex flex-wrap justify-center">
 				<Header />
-				<MovieFilter hideFilHandler={hideFilHandler} viewFilter={viewFilter} />
+				<MovieFilter
+					hideFilHandler={hideFilHandler}
+					viewFilter={viewFilter}
+					filtering={handleFiltering}
+					movies={movies}
+					newFilterResults={newFilterResults}
+				/>
 				<MovieList
 					viewFav={viewFavourite}
 					viewFilter={viewFilter}
 					moviesToShow={requestMovie}
+					favs={props.favMovie}
+					setFav={props.setFavs}
 				/>
 
 				<FavouriteList
@@ -97,7 +113,13 @@ const Listscreen = (props) => {
 		return (
 			<div className=" bg-primaryGreen h-screen flex flex-wrap justify-center">
 				<Header />
-				<MovieFilter viewFilHandler={viewFilHandler} viewFilter={viewFilter} />
+				<MovieFilter
+					viewFilHandler={viewFilHandler}
+					viewFilter={viewFilter}
+					filtering={handleFiltering}
+					movies={movies}
+					newFilterResults={newFilterResults}
+				/>
 				<MovieList
 					viewFav={viewFavourite}
 					viewFilter={viewFilter}
@@ -117,7 +139,13 @@ const Listscreen = (props) => {
 		return (
 			<div className=" bg-primaryGreen h-screen flex flex-wrap justify-center">
 				<Header />
-				<MovieFilter viewFilHandler={viewFilHandler} viewFilter={viewFilter} />
+				<MovieFilter
+					viewFilHandler={viewFilHandler}
+					viewFilter={viewFilter}
+					filtering={handleFiltering}
+					movies={movies}
+					newFilterResults={newFilterResults}
+				/>
 				<MovieList
 					viewFav={viewFavourite}
 					viewFilter={viewFilter}
@@ -141,6 +169,8 @@ const Listscreen = (props) => {
 					hideFilHandler={hideFilHandler}
 					viewFilter={viewFilter}
 					filtering={handleFiltering}
+					movies={movies}
+					newFilterResults={newFilterResults}
 				/>
 				<MovieList
 					viewFav={viewFavourite}
