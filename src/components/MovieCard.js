@@ -1,10 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { addToFav } from "../utility/utility";
 
 function MovieCard(props) {
   const posterURL = `https://image.tmdb.org/t/p/w92/${props.movie.poster}`;
   const [singleMovie, setSingleMovie] = useState(props.movie);
+
   const testfav = true;
   let statement = "";
 
@@ -17,6 +19,10 @@ function MovieCard(props) {
     return statement;
   }
 
+  const handleFavAdd = () => {
+    addToFav(props.movie);
+    props.setFav(props.movie);
+  };
   return (
     <div className="grid grid-cols-7 gap-4 px-4 py-2 items-center bg-primaryGreen mb-1">
       <div className="h-40 col-span-1 flex justify-center">
@@ -37,7 +43,9 @@ function MovieCard(props) {
         {props.movie.ratings.popularity.toFixed(1)}
       </div>
       <div className="h-12 col-span-1 text-center">
-        <button className="">{isFavorite()}</button>
+        <button className="" onClick={() => handleFavAdd()}>
+          {isFavorite()}
+        </button>
       </div>
       <div className="col-span-1 text-center">
         <Link to="/movie" state={{ singleMovie: singleMovie }}>
