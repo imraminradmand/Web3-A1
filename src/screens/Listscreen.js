@@ -22,7 +22,7 @@ const Listscreen = (props) => {
 
   const [viewFavourite, setViewFavourite] = useState(true);
   const [viewFilter, setViewFilter] = useState(true);
-  const [favouritedMovies, setFavoriteMovies] = useLStorage("favMovies", [{}]);
+  const [favouritedMovies, setFavoriteMovies] = useLStorage("favMovies", []);
 
   useEffect(() => {
     if (!props.searchedMovie) {
