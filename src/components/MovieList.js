@@ -12,14 +12,25 @@ const MovieList = ({ moviesToShow, viewFav, viewFilter, setFav }) => {
     if (sortKey !== "") {
       const sortedMovies = movieList.sort((a, b) => {
         if (sortOrder === "asc") {
-          return a[sortKey] > b[sortKey] ? 1 : -1;
-        } else if (sortOrder === "asc" && sortKey === "ratings") {
-          console.log(a[sortKey]["average"], b[sortKey]["average"]);
-          return a[sortKey]["average"] < b[sortKey]["average"] ? 1 : -1;
-        } else if (sortOrder === "asc" && sortKey === "popularity") {
-          return a[sortKey]["popularity"] < b[sortKey]["popularity"] ? 1 : -1;
+          if (sortKey === "ratings") {
+            return a[sortKey]["average"] > b[sortKey]["average"] ? 1 : -1;
+          } else if (sortKey === "popularity") {
+            return a["ratings"]["popularity"] > b["ratings"]["popularity"]
+              ? 1
+              : -1;
+          } else {
+            return a[sortKey] > b[sortKey] ? 1 : -1;
+          }
         } else {
-          return a[sortKey] < b[sortKey] ? 1 : -1;
+          if (sortKey === "ratings") {
+            return a[sortKey]["average"] < b[sortKey]["average"] ? 1 : -1;
+          } else if (sortKey === "popularity") {
+            return a["ratings"]["popularity"] < b["ratings"]["popularity"]
+              ? 1
+              : -1;
+          } else {
+            return a[sortKey] < b[sortKey] ? 1 : -1;
+          }
         }
       });
       setMovieList(sortedMovies);
