@@ -1,8 +1,14 @@
 import React from "react";
+import { removeFromFav } from "../utility/utility";
 
 const FavListMovie = (props) => {
   return (
-    <button className=" hover:opacity-70 bg-primaryOrange w-full ml-1 mr-1 p-1 rounded-md  flex items-center mb-2">
+    <button
+      className="hover:opacity-70 bg-primaryOrange w-full ml-1 mr-1 p-1 rounded-md  flex items-center mb-2"
+      onClick={() => {
+        removeFromFav(props.movie);
+      }}
+    >
       <img
         src="https://image.tmdb.org/t/p/w500/8WUVHemHFH2ZIP6NWkwlHWsyrEL.jpg"
         alt="Movie1"

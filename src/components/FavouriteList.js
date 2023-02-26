@@ -1,14 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
-import { getFavMovies } from "../utility/utility";
 import FavListMovie from "./FavListMovie";
 
 const FavouriteList = (props) => {
-  const [favs, setFavs] = useState([]);
+  const [favs, setFavs] = useState(props.favs);
 
   useEffect(() => {
-    setFavs(getFavMovies());
-  }, [favs]);
+    setFavs(props.favs);
+  }, [props.favs]);
+
   if (props.viewFav === true) {
     return (
       <div className=" bg-secondaryGreen m-1 h-5/6 w-1/6 float-right rounded-md overflow-auto">
@@ -22,8 +22,8 @@ const FavouriteList = (props) => {
         </button>
         <div className=" text-center mt-2 font-bold">Favourites</div>
         <div className="mt-5 flex flex-col items-center">
-          {favs.map((movie) => (
-            <FavListMovie movie={movie} />
+          {favs.map((movie, i) => (
+            <FavListMovie movie={movie} key={i} />
           ))}
         </div>
       </div>

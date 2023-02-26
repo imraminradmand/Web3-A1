@@ -4,9 +4,16 @@ const getFavMovies = () => {
 };
 
 const addToFav = (movie) => {
-  const favMovies = getFavMovies();
+  const favMovies = [];
+  favMovies.push(getFavMovies());
   favMovies.push(movie);
   localStorage.setItem("favMovies", JSON.stringify(favMovies));
 };
 
-export { getFavMovies, addToFav };
+const removeFromFav = (movie) => {
+  const favMovies = getFavMovies();
+
+  const newFavMovies = favMovies.filter((m) => m.id !== movie.id);
+  localStorage.setItem("favMovies", JSON.stringify(newFavMovies));
+};
+export { getFavMovies, addToFav, removeFromFav };
