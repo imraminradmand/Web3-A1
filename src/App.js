@@ -36,6 +36,8 @@ library.add(
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(false);
+  const [favs, setFavs] = useState([]);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -72,9 +74,18 @@ function App() {
           <Route exact path="/" element={<Mainscreen search={search} />} />
           <Route
             path="/list"
-            element={<Listscreen searchedMovie={searchTerm} />}
+            element={
+              <Listscreen
+                searchedMovie={searchTerm}
+                favMovie={favs}
+                setFavs={setFavs}
+              />
+            }
           />
-          <Route path="/movie" element={<SingleMovie />} />
+          <Route
+            path="/movie"
+            element={<SingleMovie favMovie={favs} setFavs={setFavs} />}
+          />
         </Routes>
       )}
     </main>
