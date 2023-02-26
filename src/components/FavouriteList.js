@@ -1,6 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
-import FavListMovie from "./FavListMovie";
 
 const FavouriteList = (props) => {
   const [favs, setFavs] = useState(props.favs);
@@ -22,9 +21,9 @@ const FavouriteList = (props) => {
         </button>
         <div className=" text-center mt-2 font-bold">Favourites</div>
         <div className="mt-5 flex flex-col items-center">
-          {favs.map((movie, i) => (
+          {/* {favs.map((movie, i) => (
             <FavListMovie movie={movie} key={i} />
-          ))}
+          ))} */}
         </div>
       </div>
     );
