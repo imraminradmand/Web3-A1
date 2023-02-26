@@ -46,11 +46,21 @@ const MovieList = ({ moviesToShow, viewFav, viewFilter, favs, setFav }) => {
 		}
 	};
 
+	// function isEmpty(movieList) {
+	// 	if (movieList.length === 0) {
+	// 		return <h1 className="text-white text-2xl">No movies found</h1>;
+	// 	}
+	// 	movieList.map((movie, i) => {
+	// 		return <MovieCard key={i} movie={movie} setFav={setFav} favs={favs} />;
+	// 	});
+	// }
+
 	if (viewFav === true && viewFilter === true) {
 		return (
 			<div className=" bg-secondaryGreen m-1 p-1 h-5/6 w-1/2 rounded-md">
 				<MovieListHeader sortHandler={handleSort} />
 				<div className="bg-secondaryGreen h-5/6 overflow-auto rounded-md mt-3">
+					{/* {isEmpty(movieList)} */}
 					{movieList.map((movie, i) => {
 						return (
 							<MovieCard key={i} movie={movie} setFav={setFav} favs={favs} />
