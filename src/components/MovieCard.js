@@ -24,7 +24,9 @@ function MovieCard(props) {
   };
 
   const handleFavAdd = () => {
-    props.setFav([...props.favs, props.movie]);
+    if (!props.favs.includes(props.movie)) {
+      props.setFav([...props.favs, props.movie]);
+    }
   };
   return (
     <div className="grid grid-cols-7 gap-4 px-4 py-2 items-center bg-primaryGreen mb-1">
