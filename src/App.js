@@ -16,6 +16,7 @@ import {
 import React, { useEffect, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
+import Loading from "./components/Loading";
 import SingleMovie from "./components/SingleMovie";
 import Listscreen from "./screens/Listscreen";
 import Mainscreen from "./screens/Mainscreen";
@@ -34,9 +35,11 @@ library.add(
 
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
+    setLoading(true);
     const getData = async () => {
       // check if local storage is empty is so fetch data
       if (localStorage.getItem("movies") === null) {
@@ -53,6 +56,7 @@ function App() {
     };
     // invoke the async function
     getData();
+    setLoading(false);
   }, []);
 
   const search = (value) => {
@@ -61,14 +65,18 @@ function App() {
 
   return (
     <main>
-      <Routes>
-        <Route exact path="/" element={<Mainscreen search={search} />} />
-        <Route
-          path="/list"
-          element={<Listscreen searchedMovie={searchTerm} />}
-        />
-        <Route path="/movie" element={<SingleMovie />} />
-      </Routes>
+      {loading ? (
+        <Loading />
+      ) : (
+        <Routes>
+          <Route exact path="/" element={<Mainscreen search={search} />} />
+          <Route
+            path="/list"
+            element={<Listscreen searchedMovie={searchTerm} />}
+          />
+          <Route path="/movie" element={<SingleMovie />} />
+        </Routes>
+      )}
     </main>
   );
 }
