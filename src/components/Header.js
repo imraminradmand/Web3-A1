@@ -1,6 +1,10 @@
 import React from "react";
 import Modal from "react-modal";
 import { Link } from "react-router-dom";
+import reactLogo from "../assets/logo192.png";
+import reactRouterLogo from "../assets/router.png";
+import tailwindLogo from "../assets/tailwind-css-icon.png";
+import mainLogo from "../assets/TEAM-LOGO-2.png";
 
 const Header = () => {
   const [modalIsOpen, setModalIsOpen] = React.useState(false);
@@ -14,11 +18,7 @@ const Header = () => {
     <div className=" bg-primaryYellow m-1 w-full flex justify-between p-2">
       <Link to="/">
         <div className="flex flex-wrap items-center">
-          <img
-            className="  ml-10 h-20"
-            src="../../TEAM-LOGO-2.png"
-            alt="logo"
-          />
+          <img className="  ml-10 h-20" src={mainLogo} alt="logo" />
           <div className="flex items-center font-bold text-xl ml-5 mt-10 text-primaryGreen ">
             "The More You Watch The More Reel It Gets..."
           </div>
@@ -81,11 +81,7 @@ const Header = () => {
             <div className=" w-1/3 mb-5   ">
               <div className=" text-center">React</div>
               <div className="flex justify-center">
-                <img
-                  className="  h-20 mt-5"
-                  src="../../logo192.png"
-                  alt="React"
-                />
+                <img className="  h-20 mt-5" src={reactLogo} alt="React" />
               </div>
             </div>
             <div className=" w-1/3 mb-5   ">
@@ -93,7 +89,7 @@ const Header = () => {
               <div className="flex justify-center">
                 <img
                   className="  h-20 mt-5"
-                  src="../../tailwind-css-icon.png"
+                  src={tailwindLogo}
                   alt="Tailwind CSS"
                 />
               </div>
@@ -103,7 +99,7 @@ const Header = () => {
               <div className="flex justify-center">
                 <img
                   className="  h-20 mt-5"
-                  src="../../router.png"
+                  src={reactRouterLogo}
                   alt="React Router"
                 />
               </div>
