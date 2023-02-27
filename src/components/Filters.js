@@ -79,7 +79,6 @@ const Filters = (props) => {
 
       props.newFilterResults(filteredMovies);
     } else if (searchType === "Genre") {
-      // console.log(props.movies);
       const filteredMovies = props.movies.filter((movie) =>
         movie.details.genres.some((genre) => genre.name === selectedOption)
       );
