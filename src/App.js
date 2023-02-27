@@ -47,7 +47,7 @@ function App() {
       if (localStorage.getItem("movies") === null) {
         try {
           const url =
-            "https://www.randyconnolly.com/funwebdev/3rd/api/movie/movies-brief.php?limit=10";
+            "https://www.randyconnolly.com/funwebdev/3rd/api/movie/movies-brief.php?limit=200";
           const response = await fetch(url);
           const data = await response.json();
           localStorage.setItem("movies", JSON.stringify(data));
