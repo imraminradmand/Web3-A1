@@ -28,6 +28,8 @@ const Filters = (props) => {
     setYearInputUpper("");
     setRatingInputLower("");
     setRatingInputUpper("");
+
+    props.newFilterResults(props.movies);
   };
 
   const handleTitleInputChange = (event) => {
