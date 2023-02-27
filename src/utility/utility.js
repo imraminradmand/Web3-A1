@@ -23,7 +23,9 @@ const getAllGenres = () => {
   // look at all the movies pull the genres out and place in an array, no duplicates
   const uniqueGenres = Array.from(
     new Set(
-      movies.flatMap((movie) => movie.details.genres.map((genre) => genre.name))
+      movies.flatMap((movie) =>
+        movie.details?.genres?.map((genre) => genre.name)
+      )
     )
   );
 

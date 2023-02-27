@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { getAllGenres } from "../utility/utility";
+import { getAllGenres } from "../utility/utility.js";
 
 const Filters = (props) => {
   const [searchType, setSearchType] = useState("Title");
@@ -90,7 +90,7 @@ const Filters = (props) => {
       props.newFilterResults(sorted);
     } else if (searchType === "Genre") {
       const filteredMovies = props.movies.filter((movie) =>
-        movie.details.genres.some((genre) => genre.name === selectedOption)
+        movie.details?.genres?.some((genre) => genre.name === selectedOption)
       );
       const sorted = alphabeticSort(filteredMovies);
       props.newFilterResults(sorted);
