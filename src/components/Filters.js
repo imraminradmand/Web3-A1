@@ -23,6 +23,9 @@ const Filters = (props) => {
     setSelectedOption("");
   };
 
+  const alphabeticSort = (movies) => {
+    return movies.slice().sort((a, b) => a.title.localeCompare(b.title));
+  };
   const clearFilters = () => {
     setSearchType("");
     setTitleInput("");
@@ -32,9 +35,7 @@ const Filters = (props) => {
     setRatingInputLower("");
     setRatingInputUpper("");
 
-    const sortedMovies = props.movies
-      .slice()
-      .sort((a, b) => a.title.localeCompare(b.title));
+    const sortedMovies = alphabeticSort(props.movies);
 
     props.newFilterResults(sortedMovies);
   };
@@ -85,28 +86,35 @@ const Filters = (props) => {
       const filteredMovies = props.movies.filter((movie) =>
         movie.title.toLowerCase().includes(titleInput.toLowerCase())
       );
-
-      props.newFilterResults(filteredMovies);
+      const sorted = alphabeticSort(filteredMovies);
+      props.newFilterResults(sorted);
     } else if (searchType === "Genre") {
       const filteredMovies = props.movies.filter((movie) =>
         movie.details.genres.some((genre) => genre.name === selectedOption)
       );
-      props.newFilterResults(filteredMovies);
+      const sorted = alphabeticSort(filteredMovies);
+      props.newFilterResults(sorted);
     } else if (searchType === "Year") {
       const filteredMovies = props.movies.filter(
         (movie) =>
           movie.release_date.slice(0, 4) >= yearInputLower &&
           movie.release_date.slice(0, 4) <= yearInputUpper
       );
-      props.newFilterResults(filteredMovies);
+
+      const sorted = filteredMovies.slice().sort((a, b) => {
+        return a.release_date.slice(0, 4) - b.release_date.slice(0, 4);
+      });
+      props.newFilterResults(sorted);
     } else {
       const filteredMovies = props.movies.filter(
         (movie) =>
           movie.ratings.average >= ratingInputLower &&
           movie.ratings.average <= ratingInputUpper
       );
-
-      props.newFilterResults(filteredMovies);
+      const sorted = filteredMovies.slice().sort((a, b) => {
+        return a.ratings.average - b.ratings.average;
+      });
+      props.newFilterResults(sorted);
     }
   };
 
