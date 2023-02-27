@@ -91,8 +91,8 @@ const Filters = (props) => {
 		} else if (searchType === "Year") {
 			const filteredMovies = props.movies.filter(
 				(movie) =>
-					movie.release_date >= yearInputLower &&
-					movie.release_date <= yearInputUpper
+					movie.release_date.slice(0, 4) >= yearInputLower &&
+					movie.release_date.slice(0, 4) <= yearInputUpper
 			);
 			props.newFilterResults(filteredMovies);
 		} else {
