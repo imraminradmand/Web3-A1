@@ -12,8 +12,6 @@ const Listscreen = (props) => {
   );
   const [requestMovie, setRequestedMovie] = useState([]);
 
-  const { filteredList, setFilteredList } = useState([]);
-
   const [titleInput, setTitleInput] = useState("");
   const [yearInputLower, setYearInputLower] = useState("");
   const [yearInputUpper, setYearInputUpper] = useState("");

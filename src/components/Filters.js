@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { getAllGenres } from "../utility/utility";
 
 const Filters = (props) => {
   const [searchType, setSearchType] = useState("Title");
@@ -8,6 +9,8 @@ const Filters = (props) => {
   const [ratingInputLower, setRatingInputLower] = useState("");
   const [ratingInputUpper, setRatingInputUpper] = useState("");
   const [selectedOption, setSelectedOption] = useState("");
+
+  const genreList = getAllGenres();
 
   const handleRadioChange = (event) => {
     setSearchType(event.target.value);
@@ -142,9 +145,11 @@ const Filters = (props) => {
           onChange={handleSelectChange}
         >
           <option value="">Select a genre...</option>
-          <option value="Action">Action</option>
-          <option value="Comedy">Comedy</option>
-          <option value="Drama">Drama</option>
+          {genreList.map((genre, i) => (
+            <option key={i} value={genre}>
+              {genre}
+            </option>
+          ))}
         </select>
       </div>
       <div className="flex items-center mb-4">

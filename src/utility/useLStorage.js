@@ -1,3 +1,5 @@
+// FOR USE IF YOU WANT TO STORE FAV MOVIES IN LOCAL STORAGE AND HAVE REACT HOOKS WORK
+
 // from https://stackoverflow.com/questions/71451780/how-to-make-page-re-render-after-localstorage-change
 // + some modifications on our end
 
