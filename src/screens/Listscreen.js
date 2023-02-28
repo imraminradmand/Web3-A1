@@ -4,6 +4,7 @@ import FavouriteList from "../components/FavouriteList";
 import Header from "../components/Header";
 import MovieFilter from "../components/MovieFilter";
 import MovieList from "../components/MovieList";
+import Loading from "./components/Loading";
 
 const Listscreen = (props) => {
   const navigate = useNavigate();
@@ -21,12 +22,14 @@ const Listscreen = (props) => {
 
   const [viewFavourite, setViewFavourite] = useState(true);
   const [viewFilter, setViewFilter] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   function newFilterResults(filteredList) {
     setRequestedMovie(filteredList);
   }
 
   useEffect(() => {
+    setLoading(true);
     if (!props.searchedMovie) {
       navigate("/");
     }
@@ -44,6 +47,8 @@ const Listscreen = (props) => {
         .sort((a, b) => a.title.localeCompare(b.title));
       setRequestedMovie(sortedMovies);
     }
+
+    setLoading(false);
   }, [props.searchedMovie, movies, navigate]);
 
   const viewHandler = () => {
@@ -78,111 +83,115 @@ const Listscreen = (props) => {
     setGenreInput(genre);
   };
 
-  if (viewFavourite === false && viewFilter === true) {
-    return (
-      <div className=" bg-primaryGreen h-screen flex flex-wrap justify-center">
-        <Header />
-        <MovieFilter
-          hideFilHandler={hideFilHandler}
-          viewFilter={viewFilter}
-          filtering={handleFiltering}
-          movies={movies}
-          newFilterResults={newFilterResults}
-        />
-        <MovieList
-          viewFav={viewFavourite}
-          viewFilter={viewFilter}
-          moviesToShow={requestMovie}
-          favs={props.favMovie}
-          setFav={props.setFavs}
-        />
-
-        <FavouriteList
-          viewHandler={viewHandler}
-          viewFav={viewFavourite}
-          favs={props.favMovie}
-          setFav={props.setFavs}
-        />
-      </div>
-    );
-  } else if (viewFavourite === true && viewFilter === false) {
-    return (
-      <div className=" bg-primaryGreen h-screen flex flex-wrap justify-center">
-        <Header />
-        <MovieFilter
-          viewFilHandler={viewFilHandler}
-          viewFilter={viewFilter}
-          filtering={handleFiltering}
-          movies={movies}
-          newFilterResults={newFilterResults}
-        />
-        <MovieList
-          viewFav={viewFavourite}
-          viewFilter={viewFilter}
-          moviesToShow={requestMovie}
-          favs={props.favMovie}
-          setFav={props.setFavs}
-        />
-        <FavouriteList
-          hideHandler={hideHandler}
-          viewFav={viewFavourite}
-          favs={props.favMovie}
-          setFav={props.setFavs}
-        />
-      </div>
-    );
-  } else if (viewFavourite === false && viewFilter === false) {
-    return (
-      <div className=" bg-primaryGreen h-screen flex flex-wrap justify-center">
-        <Header />
-        <MovieFilter
-          viewFilHandler={viewFilHandler}
-          viewFilter={viewFilter}
-          filtering={handleFiltering}
-          movies={movies}
-          newFilterResults={newFilterResults}
-        />
-        <MovieList
-          viewFav={viewFavourite}
-          viewFilter={viewFilter}
-          moviesToShow={requestMovie}
-          favs={props.favMovie}
-          setFav={props.setFavs}
-        />
-        <FavouriteList
-          viewHandler={viewHandler}
-          viewFav={viewFavourite}
-          favs={props.favMovie}
-          setFav={props.setFavs}
-        />
-      </div>
-    );
+  if (loading) {
+    return <Loading />;
   } else {
-    return (
-      <div className=" bg-primaryGreen h-screen flex flex-wrap justify-center">
-        <Header />
-        <MovieFilter
-          hideFilHandler={hideFilHandler}
-          viewFilter={viewFilter}
-          filtering={handleFiltering}
-          movies={movies}
-          newFilterResults={newFilterResults}
-        />
-        <MovieList
-          viewFav={viewFavourite}
-          viewFilter={viewFilter}
-          moviesToShow={requestMovie}
-          favs={props.favMovie}
-          setFav={props.setFavs}
-        />
-        <FavouriteList
-          hideHandler={hideHandler}
-          viewFav={viewFavourite}
-          favs={props.favMovie}
-          setFav={props.setFavs}
-        />
-      </div>
-    );
+    if (viewFavourite === false && viewFilter === true) {
+      return (
+        <div className=" bg-primaryGreen h-screen flex flex-wrap justify-center">
+          <Header />
+          <MovieFilter
+            hideFilHandler={hideFilHandler}
+            viewFilter={viewFilter}
+            filtering={handleFiltering}
+            movies={movies}
+            newFilterResults={newFilterResults}
+          />
+          <MovieList
+            viewFav={viewFavourite}
+            viewFilter={viewFilter}
+            moviesToShow={requestMovie}
+            favs={props.favMovie}
+            setFav={props.setFavs}
+          />
+
+          <FavouriteList
+            viewHandler={viewHandler}
+            viewFav={viewFavourite}
+            favs={props.favMovie}
+            setFav={props.setFavs}
+          />
+        </div>
+      );
+    } else if (viewFavourite === true && viewFilter === false) {
+      return (
+        <div className=" bg-primaryGreen h-screen flex flex-wrap justify-center">
+          <Header />
+          <MovieFilter
+            viewFilHandler={viewFilHandler}
+            viewFilter={viewFilter}
+            filtering={handleFiltering}
+            movies={movies}
+            newFilterResults={newFilterResults}
+          />
+          <MovieList
+            viewFav={viewFavourite}
+            viewFilter={viewFilter}
+            moviesToShow={requestMovie}
+            favs={props.favMovie}
+            setFav={props.setFavs}
+          />
+          <FavouriteList
+            hideHandler={hideHandler}
+            viewFav={viewFavourite}
+            favs={props.favMovie}
+            setFav={props.setFavs}
+          />
+        </div>
+      );
+    } else if (viewFavourite === false && viewFilter === false) {
+      return (
+        <div className=" bg-primaryGreen h-screen flex flex-wrap justify-center">
+          <Header />
+          <MovieFilter
+            viewFilHandler={viewFilHandler}
+            viewFilter={viewFilter}
+            filtering={handleFiltering}
+            movies={movies}
+            newFilterResults={newFilterResults}
+          />
+          <MovieList
+            viewFav={viewFavourite}
+            viewFilter={viewFilter}
+            moviesToShow={requestMovie}
+            favs={props.favMovie}
+            setFav={props.setFavs}
+          />
+          <FavouriteList
+            viewHandler={viewHandler}
+            viewFav={viewFavourite}
+            favs={props.favMovie}
+            setFav={props.setFavs}
+          />
+        </div>
+      );
+    } else {
+      return (
+        <div className=" bg-primaryGreen h-screen flex flex-wrap justify-center">
+          <Header />
+          <MovieFilter
+            hideFilHandler={hideFilHandler}
+            viewFilter={viewFilter}
+            filtering={handleFiltering}
+            movies={movies}
+            newFilterResults={newFilterResults}
+          />
+          <MovieList
+            viewFav={viewFavourite}
+            viewFilter={viewFilter}
+            moviesToShow={requestMovie}
+            favs={props.favMovie}
+            setFav={props.setFavs}
+          />
+          <FavouriteList
+            hideHandler={hideHandler}
+            viewFav={viewFavourite}
+            favs={props.favMovie}
+            setFav={props.setFavs}
+          />
+        </div>
+      );
+    }
   }
 };
 export default Listscreen;

@@ -20,6 +20,7 @@ import Loading from "./components/Loading";
 import SingleMovie from "./components/SingleMovie";
 import Listscreen from "./screens/Listscreen";
 import Mainscreen from "./screens/Mainscreen";
+
 library.add(
   faHeart,
   farHeart,
