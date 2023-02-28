@@ -4,6 +4,7 @@ import Modal from "react-modal";
 
 const SingleMovieTitleImage = (props) => {
   const URL = `https://image.tmdb.org/t/p/w500/${props.movie.poster}`;
+  const initURL = `https://image.tmdb.org/t/p/w342/${props.movie.poster}`;
   const title = props.movie.title;
   const testfav = true;
   let statement = "";
@@ -69,7 +70,7 @@ const SingleMovieTitleImage = (props) => {
         <div className=" text-center font-bold text-4xl p-5">{title}</div>
         <div className="flex justify-center">
           <div onClick={toggleModal} className="p-2 bg-primaryYellow w-2/3 ">
-            <img className=" h-full" src={URL} alt="movie poster " />
+            <img className=" h-full" src={initURL} alt="movie poster " />
           </div>
           <Modal
             className=" overflow-auto top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 absolute  bg-primaryYellow border-primaryGreen border-solid border-4 rounded"
