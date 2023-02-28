@@ -20,7 +20,7 @@ const FavListMovie = (props) => {
     <div
       className={` bg-primaryOrange w-full ml-1 mr-1 p-1 rounded-md flex items-center mb-2 relative`}
     >
-      <Link to="/movie" state={{ singleMovie: singleMovie }}>
+      <Link to="/movie" state={{ singleMovie: props.movie }}>
         <img
           src={`https://image.tmdb.org/t/p/w500/${props.movie.poster}`}
           alt={props.movie.title}
