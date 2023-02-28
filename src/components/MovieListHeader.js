@@ -32,7 +32,7 @@ const MovieListHeader = ({ sortHandler }) => {
         className="text-lg font-medium text-center cursor-pointer"
         onClick={() => handleSort("popularity")}
       >
-        Popularity <FontAwesomeIcon icon={faSort} size="2xs" />
+        Popular <FontAwesomeIcon icon={faSort} size="2xs" />
       </div>
       <div className="col-span-2"></div>
     </div>
