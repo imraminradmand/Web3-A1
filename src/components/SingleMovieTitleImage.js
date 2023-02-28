@@ -23,11 +23,13 @@ const SingleMovieTitleImage = (props) => {
   }
 
   const handleFavourting = () => {
-    if (props.favs.includes(props.movie)) {
+    if (props.favs.some((movie) => movie.title === props.movie.title)) {
+      // Remove the movie from favorites
       const temp = [...props.favs];
-      const newArr = temp.filter((movie) => movie !== props.movie);
+      const newArr = temp.filter((movie) => movie.title !== props.movie.title);
       props.setFav(newArr);
     } else {
+      // Add the movie to favorites
       props.setFav([...props.favs, props.movie]);
     }
   };
