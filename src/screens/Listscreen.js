@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import FavouriteList from "../components/FavouriteList";
 import Header from "../components/Header";
+import Loading from "../components/Loading";
 import MovieFilter from "../components/MovieFilter";
 import MovieList from "../components/MovieList";
-import Loading from "./components/Loading";
 
 const Listscreen = (props) => {
   const navigate = useNavigate();
@@ -84,6 +84,7 @@ const Listscreen = (props) => {
   };
 
   if (loading) {
+    // Loading happens too fast to ever see this
     return <Loading />;
   } else {
     if (viewFavourite === false && viewFilter === true) {

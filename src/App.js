@@ -66,6 +66,7 @@ function App() {
     setSearchTerm(value);
   };
 
+  // Loading happens too fast to ever see Loading component
   return (
     <main>
       {loading ? (

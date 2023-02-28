@@ -7,8 +7,6 @@ const SingleMovieInfo = (props) => {
   const revenueComma = revenue.toLocaleString("en-US");
   const tmdb = "https://www.themoviedb.org/movie/";
   const imdb = " https://www.imdb.com/title/";
-  const pop = props.movie.ratings.popularity;
-  const popCut = pop.toFixed(2);
 
   return (
     <div className=" bg-secondaryGreen m-3 mt-6 p-1 h-3/4 overflow-auto ">
@@ -56,14 +54,22 @@ const SingleMovieInfo = (props) => {
           </div>
         </div>
         <div className="w-1/2  text-center mt-8">
-          <a target="_blank" href={tmdb + `${props.movie.tmdb_id}`}>
+          <a
+            target="_blank"
+            href={tmdb + `${props.movie.tmdb_id}`}
+            rel="noreferrer"
+          >
             <button className=" bg-primaryGreen border-primaryGreen border-solid border-2 hover:bg-secondaryGreen pl-3 pr-3 pt-2 pb-2 text-center rounded">
               View on TMDB
             </button>
           </a>
         </div>
         <div className="w-1/2 text-center float-right mt-8">
-          <a target="_blank" href={imdb + `${props.movie.imdb_id}`}>
+          <a
+            target="_blank"
+            href={imdb + `${props.movie.imdb_id}`}
+            rel="noreferrer"
+          >
             <button className="  bg-primaryGreen border-primaryGreen border-solid border-2 hover:bg-secondaryGreen pl-3 pr-3 pt-2 pb-2 text-center rounded">
               View on IMDB
             </button>

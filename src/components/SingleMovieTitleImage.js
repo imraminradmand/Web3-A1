@@ -8,7 +8,6 @@ const SingleMovieTitleImage = (props) => {
   const testfav = true;
   let statement = "";
   const stars = 10;
-  const mrating = 0;
   const [rating, setRating] = useState(0);
   const [modalIsOpen, setModalIsOpen] = React.useState(false);
   Modal.setAppElement("#root");
